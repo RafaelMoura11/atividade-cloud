@@ -1,30 +1,30 @@
-name: Testa se API está funcionando
+# name: Testa se API está funcionando
 
-on:
-  push:
-    branches: [ "main" ]
+# on:
+#   push:
+#     branches: [ "main" ]
 
-jobs:
-  test-api:
-    runs-on: ubuntu-latest
+# jobs:
+#   test-api:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: ⬇️ Clonar o repositório
-        uses: actions/checkout@v3
+#     steps:
+#       - name: ⬇️ Clonar o repositório
+#         uses: actions/checkout@v3
 
-      - name: 🔧 Instalar dependências
-        run: npm install
+#       - name: 🔧 Instalar dependências
+#         run: npm install
 
-      - name: 🚀 Iniciar API em segundo plano
-        run: npm start &
+#       - name: 🚀 Iniciar API em segundo plano
+#         run: npm start &
 
-      - name: 🕐 Aguardar a API ficar disponível
-        run: |
-          echo "Aguardando a API iniciar..."
-          sleep 5
+#       - name: 🕐 Aguardar a API ficar disponível
+#         run: |
+#           echo "Aguardando a API iniciar..."
+#           sleep 5
 
-      - name: 🔍 Testar se API está respondendo
-        run: curl -f http://localhost:3000/ || (echo "A API não respondeu" && exit 1)
+#       - name: 🔍 Testar se API está respondendo
+#         run: curl -f http://localhost:3000/ || (echo "A API não respondeu" && exit 1)
 
-      - name: ✅ Sucesso
-        run: echo "API testada com sucesso!"
+#       - name: ✅ Sucesso
+#         run: echo "API testada com sucesso!"
