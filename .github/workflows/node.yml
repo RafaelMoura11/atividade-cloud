@@ -1,26 +1,30 @@
-name: Node.js CI
+name: Testa se API está funcionando
 
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
-  build:
+  test-api:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🔄 Clonar o repositório
+      - name: ⬇️ Clonar o repositório
         uses: actions/checkout@v3
 
-      - name: 🟢 Usar Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-
-      - name: 📦 Instalar dependências
+      - name: 🔧 Instalar dependências
         run: npm install
 
-      - name: 🚀 Iniciar a aplicação
-        run: npm start
+      - name: 🚀 Iniciar API em segundo plano
+        run: npm start &
+
+      - name: 🕐 Aguardar a API ficar disponível
+        run: |
+          echo "Aguardando a API iniciar..."
+          sleep 5
+
+      - name: 🔍 Testar se API está respondendo
+        run: curl -f http://localhost:3000/ || (echo "A API não respondeu" && exit 1)
+
+      - name: ✅ Sucesso
+        run: echo "API testada com sucesso!"
