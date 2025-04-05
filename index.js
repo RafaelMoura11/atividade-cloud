@@ -7,6 +7,10 @@ app.get('/', (req, res) => {
   res.send('Está funcionando');
 });
 
+app.get('/ping', (req, res) => {
+    res.send('Pong');
+  });
+
 app.listen(port, () => {
   console.log(`Servidor rodando na porta ${port}`);
 });
