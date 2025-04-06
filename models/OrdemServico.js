@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 const sequelize = require("../config/db");
 const Veiculo = require("./Veiculo");
 
-const OrdemServico = sequelize.define("OrdemServico", {
+const OrdemServico = sequelize.define("ordens_servico", {
   dataEntrada: {
     type: DataTypes.DATE,
     allowNull: false,

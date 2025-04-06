@@ -3,7 +3,7 @@ const sequelize = require("../config/db");
 const OrdemServico = require("./OrdemServico");
 const Servico = require("./Servico");
 
-const OrdemServicoServico = sequelize.define("OrdemServicoServico", {
+const OrdemServicoServico = sequelize.define("ordens_servico_servico", {
   quantidade: {
     type: DataTypes.INTEGER,
     allowNull: false,

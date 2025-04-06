@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 const sequelize = require("../config/db");
 const Cliente = require("./Cliente");
 
-const Veiculo = sequelize.define("Veiculo", {
+const Veiculo = sequelize.define("veiculo", {
   marca: {
     type: DataTypes.STRING,
     allowNull: false,
