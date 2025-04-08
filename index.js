@@ -21,7 +21,7 @@ app.use("/ordens-servico", ordemServicoRoutes);
 app.use("/ordens-servico-servicos", ordemServicoServicoRoutes);
 
 app.get("/", (req, res) => res.send("Está funcionando"));
-app.get("/ping", (req, res) => res.send("Pong"));
+// app.get("/ping", (req, res) => res.send("Pong"));
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Servidor rodando na porta ${port}`));
