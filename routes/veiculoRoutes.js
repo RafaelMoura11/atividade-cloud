@@ -1,15 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const Veiculo = require("../models/Veiculo");
+const veiculoController = require("../controllers/veiculoController");
 
-router.get("/", async (req, res) => {
-  try {
-    const veiculos = await Veiculo.findAll();
-    res.json(veiculos);
-  } catch (error) {
-    console.error("Erro ao buscar veículos:", error);
-    res.status(500).json({ message: "Erro ao buscar veículos", error: error.message });
-  }
-});
+router.get("/", veiculoController.getAllVeiculos);
+router.get("/:id", veiculoController.getVeiculoById);
+router.post("/", veiculoController.createVeiculo);
+router.put("/:id", veiculoController.updateVeiculo);
+router.delete("/:id", veiculoController.deleteVeiculo);
 
 module.exports = router;

@@ -1,15 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const Servico = require("../models/Servico");
+const servicoController = require("../controllers/servicoController");
 
-router.get("/", async (req, res) => {
-  try {
-    const servicos = await Servico.findAll();
-    res.json(servicos);
-  } catch (error) {
-    console.error("Erro ao buscar serviços:", error);
-    res.status(500).json({ message: "Erro ao buscar serviços", error: error.message });
-  }
-});
+router.get("/", servicoController.getAllServicos);
+router.get("/:id", servicoController.getServicoById);
+router.post("/", servicoController.createServico);
+router.put("/:id", servicoController.updateServico);
+router.delete("/:id", servicoController.deleteServico);
 
 module.exports = router;

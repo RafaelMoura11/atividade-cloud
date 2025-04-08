@@ -1,18 +1,11 @@
 const express = require("express");
 const router = express.Router();
-const OrdemServicoServico = require("../models/OrdemServicoServico");
+const controller = require("../controllers/ordemServicoServicoController");
 
-router.get("/", async (req, res) => {
-  try {
-    const relacoes = await OrdemServicoServico.findAll();
-    res.json(relacoes);
-  } catch (error) {
-    console.error("Erro ao buscar relações ordem-serviço e serviço:", error);
-    res.status(500).json({
-      message: "Erro ao buscar relações ordem-serviço e serviço",
-      error: error.message,
-    });
-  }
-});
+router.get("/", controller.getAll);
+router.get("/:ordemId/:servicoId", controller.getById);
+router.post("/", controller.create);
+router.put("/:ordemId/:servicoId", controller.update);
+router.delete("/:ordemId/:servicoId", controller.remove);
 
 module.exports = router;

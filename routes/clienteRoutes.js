@@ -1,15 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const Cliente = require("../models/Cliente");
+const clienteController = require("../controllers/clienteController");
 
-router.get("/", async (req, res) => {
-  try {
-    const clientes = await Cliente.findAll();
-    res.json(clientes);
-  } catch (error) {
-    console.error("Erro ao buscar clientes:", error);
-    res.status(500).json({ message: "Erro ao buscar clientes", error: error.message });
-  }
-});
+// Rotas
+router.get("/", clienteController.getAllClientes);
+router.get("/:id", clienteController.getClienteById);
+router.post("/", clienteController.createCliente);
+router.put("/:id", clienteController.updateCliente);
+router.delete("/:id", clienteController.deleteCliente);
 
 module.exports = router;
